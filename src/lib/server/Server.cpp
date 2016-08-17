@@ -511,7 +511,7 @@ Server::switchScreen(BaseClientProxy* dst,
 		// cut over
 		BaseClientProxy* oldActive = m_active;
 		m_active = dst;
-		
+
 		// increment enter sequence number
 		++m_seqNum;
 
