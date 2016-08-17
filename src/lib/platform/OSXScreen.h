@@ -235,7 +235,8 @@ private:
 		bool test(UInt32 button) const;
 		SInt8 getFirstButtonDown() const;
 	private:
-		std::bitset<NumButtonIDs>	  m_buttons;
+		std::bitset<NumButtonIDs>
+						m_buttons;
 	};
 
 	typedef std::map<UInt32, HotKeyItem> HotKeyMap;
@@ -280,11 +281,11 @@ private:
 	OSXKeyState*		m_keyState;
 
 	// clipboards
-	OSXClipboard       m_pasteboard;
+	OSXClipboard		m_pasteboard;
 	UInt32				m_sequenceNumber;
 
 	// screen saver stuff
-	OSXScreenSaver*	m_screensaver;
+	OSXScreenSaver*		m_screensaver;
 	bool				m_screensaverNotify;
 
 	// clipboard stuff
@@ -299,47 +300,47 @@ private:
 	WindowRef			m_userInputWindow;
 
 	// fast user switching
-	EventHandlerRef			m_switchEventHandlerRef;
+	EventHandlerRef		m_switchEventHandlerRef;
 
 	// sleep / wakeup
-	Mutex*					m_pmMutex;
+	Mutex*				m_pmMutex;
 	Thread*				m_pmWatchThread;
-    CondVar<bool>*			m_pmThreadReady;
-	CFRunLoopRef			m_pmRunloop;
-	io_connect_t			m_pmRootPort;
+    CondVar<bool>*		m_pmThreadReady;
+	CFRunLoopRef		m_pmRunloop;
+	io_connect_t		m_pmRootPort;
 
 	// hot key stuff
-	HotKeyMap				m_hotKeys;
-	HotKeyIDList			m_oldHotKeyIDs;
-	ModifierHotKeyMap		m_modifierHotKeys;
-	UInt32					m_activeModifierHotKey;
-	KeyModifierMask			m_activeModifierHotKeyMask;
-	HotKeyToIDMap			m_hotKeyToIDMap;
+	HotKeyMap			m_hotKeys;
+	HotKeyIDList		m_oldHotKeyIDs;
+	ModifierHotKeyMap	m_modifierHotKeys;
+	UInt32				m_activeModifierHotKey;
+	KeyModifierMask		m_activeModifierHotKeyMask;
+	HotKeyToIDMap		m_hotKeyToIDMap;
 
 	// global hotkey operating mode
-	static bool				s_testedForGHOM;
-	static bool				s_hasGHOM;
+	static bool			s_testedForGHOM;
+	static bool			s_hasGHOM;
 	
 	// Quartz input event support
-	CFMachPortRef			m_eventTapPort;
-	CFRunLoopSourceRef		m_eventTapRLSR;
+	CFMachPortRef		m_eventTapPort;
+	CFRunLoopSourceRef	m_eventTapRLSR;
 
 	// for double click coalescing.
-	double					m_lastClickTime;
-    int                     m_clickState;
-	SInt32					m_lastSingleClickXCursor;
-	SInt32					m_lastSingleClickYCursor;
+	double				m_lastClickTime;
+    int					m_clickState;
+	SInt32				m_lastSingleClickXCursor;
+	SInt32				m_lastSingleClickYCursor;
 
 	// cursor will hide and show on enable and disable if true.
-	bool					m_autoShowHideCursor;
+	bool				m_autoShowHideCursor;
 
-	IEventQueue*			m_events;
+	IEventQueue*		m_events;
 	
 	Thread*				m_getDropTargetThread;
-	String					m_dropTarget;
+	String				m_dropTarget;
 	
 #if defined(MAC_OS_X_VERSION_10_7)
-	Mutex*					m_carbonLoopMutex;
-	CondVar<bool>*			m_carbonLoopReady;
+	Mutex*				m_carbonLoopMutex;
+	CondVar<bool>*		m_carbonLoopReady;
 #endif
 };
