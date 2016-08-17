@@ -509,8 +509,9 @@ Server::switchScreen(BaseClientProxy* dst,
 		}
 
 		// cut over
+		BaseClientProxy* oldActive = m_active;
 		m_active = dst;
-
+		
 		// increment enter sequence number
 		++m_seqNum;
 
@@ -519,12 +520,14 @@ Server::switchScreen(BaseClientProxy* dst,
 								m_primaryClient->getToggleMask(),
 								forScreensaver);
 		
-		// send the clipboard data to new active screen
-		m_sendClipboardThread = new Thread(
-									new TMethodJob<Server>(
-										this,
-										&Server::sendClipboardThread,
-										NULL));
+		// send the clipboard data to new active screen only when switch
+		// from server to client
+		if (oldActive == m_primaryClient) {
+			m_sendClipboardThread = new Thread(
+										new TMethodJob<Server>(this,
+											&Server::sendClipboardThread,
+											NULL));
+		}
 
 		Server::SwitchToScreenInfo* info =
 			Server::SwitchToScreenInfo::alloc(m_active->getName());
