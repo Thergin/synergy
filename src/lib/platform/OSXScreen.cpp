@@ -92,7 +92,6 @@ OSXScreen::OSXScreen(IEventQueue* events, bool isPrimary, bool autoShowHideCurso
 	m_sequenceNumber(0),
 	m_screensaver(NULL),
 	m_screensaverNotify(false),
-	m_ownClipboard(false),
 	m_clipboardTimer(NULL),
 	m_hiddenWindow(NULL),
 	m_userInputWindow(NULL),

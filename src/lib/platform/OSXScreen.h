@@ -289,7 +289,6 @@ private:
 	bool				m_screensaverNotify;
 
 	// clipboard stuff
-	bool				m_ownClipboard;
 	EventQueueTimer*	m_clipboardTimer;
 
 	// window object that gets user input events when the server
